@@ -1,7 +1,7 @@
 {
    "name": "retork-cli",
    "version": "1.0.0",
-   "description": "Software Development Kit for Angular",
+   "description": "CLI for react",
    "keywords": [
       "react",
       "cli",
