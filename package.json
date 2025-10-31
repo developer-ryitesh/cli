@@ -1,0 +1,29 @@
+{
+   "name": "cli",
+   "version": "1.0.0",
+   "description": "",
+   "type": "module",
+   "bin": {
+      "cli": "./bin/index.js"
+   },
+   "scripts": {
+      "dev": "npm unlink cli -g & chmod +x bin/index.js & npm link"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
+   "dependencies": {
+      "chalk": "^5.6.2",
+      "commander": "^14.0.2",
+      "fs-extra": "^11.3.2",
+      "inquirer": "^12.10.0"
+   },
+   "devDependencies": {
+      "@types/fs-extra": "^11.0.4",
+      "@types/node": "^24.9.2",
+      "chmod-cli": "^2.0.1",
+      "cross-env": "^10.1.0",
+      "ts-node": "^10.9.2",
+      "typescript": "^5.9.3"
+   }
+}
