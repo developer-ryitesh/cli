@@ -11,6 +11,7 @@ const cmd = new Command("g") //
 
 cmd.command("create-app <name>")
    .description("Generate a new React component") //
+   .alias("app")
    .action(CreateApp);
 
 cmd.command("component <name>")
