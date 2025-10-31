@@ -6,7 +6,7 @@ import Controller from "./controller.command.js";
 import PageController from "./page-controller.command.js";
 import Service from "./service.command.js";
 
-const cmd = new Command("react") //
+const cmd = new Command("g") //
    .description("Generate new React-related files like components, pages, and utilities etc.");
 
 cmd.command("create-app <name>")
