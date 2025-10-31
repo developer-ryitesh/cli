@@ -1,15 +1,20 @@
 {
-   "name": "cli",
+   "name": "retork-cli",
    "version": "1.0.0",
-   "description": "",
+   "description": "Software Development Kit for Angular",
+   "keywords": [
+      "react",
+      "cli",
+      "component",
+      "module"
+   ],
    "type": "module",
    "bin": {
-      "cli": "./bin/index.js"
+      "retork": "./bin/index.js"
    },
    "scripts": {
-      "dev": "npm unlink cli -g & chmod +x bin/index.js & npm link"
+      "dev": "npm unlink retork -g & chmod +x bin/index.js & npm link"
    },
-   "keywords": [],
    "author": "",
    "license": "ISC",
    "dependencies": {
