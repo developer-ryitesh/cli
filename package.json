@@ -1,6 +1,6 @@
 {
-   "name": "retork-cli",
-   "version": "1.0.2",
+   "name": "@retork/cli",
+   "version": "1.0.1",
    "description": "CLI for react",
    "keywords": [
       "react",
@@ -13,7 +13,8 @@
       "retork": "./bin/index.js"
    },
    "scripts": {
-      "dev": "npm unlink retork -g & chmod +x bin/index.js & npm link"
+      "dev": "npm unlink retork -g & chmod +x bin/index.js & npm link",
+      "deploy": "npm publish --access public"
    },
    "author": "",
    "license": "ISC",

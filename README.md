@@ -7,7 +7,7 @@ A command-line interface for bootstrapping and generating boilerplate code for R
 Install the CLI globally using npm:
 
 ```bash
-npm install -g retork-cli
+npm install -g @retork/cli
 ```
 
 ## Usage
