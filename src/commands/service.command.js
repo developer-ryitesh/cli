@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 import path from "path";
-import { logger, renderTemplate } from "../utils/index.js";
+import { logger, renderPlaceholder } from "../utils/index.js";
 
 const template = `import HttpClient from "@/libs/interceptors";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
@@ -67,6 +67,6 @@ export default async function Service(name) {
    await fs.mkdirp(dir);
    const filePath = path.join(dir, `${name}.service.ts`);
 
-   await fs.writeFile(filePath, renderTemplate({ template: template, input: name }));
+   await fs.writeFile(filePath, renderPlaceholder({ template: template, input: name }));
    logger.success(`✅ Service : ./${name}.service.ts created`);
 }

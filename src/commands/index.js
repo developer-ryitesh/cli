@@ -5,6 +5,7 @@ import Page from "./page.command.js";
 import Controller from "./controller.command.js";
 import PageController from "./page-controller.command.js";
 import Service from "./service.command.js";
+import Module from "./module.command.js";
 
 const cmd = new Command("g") //
    .description("Generate new React-related files like components, pages, and utilities etc.");
@@ -40,5 +41,10 @@ cmd.command("service <name>")
    .alias("s")
    .description("Generate a new react page controller") //
    .action(Service);
+
+cmd.command("module <name>")
+   .alias("m")
+   .description("Generate a new react page controller") //
+   .action(Module);
 
 export default cmd;

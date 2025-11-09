@@ -1,6 +1,6 @@
- import fs from "fs-extra";
+import fs from "fs-extra";
 import path from "path";
-import { logger, renderTemplate } from "../utils/index.js";
+import { logger, renderPlaceholder } from "../utils/index.js";
 
 const template = `import { Helmet } from "react-helmet";
 
@@ -32,6 +32,6 @@ export default async function Page(name, option) {
    await fs.mkdirp(dir);
    const filePath = path.join(dir, `${name}.page.tsx`);
 
-   await fs.writeFile(filePath, renderTemplate({ template: template, input: name }));
+   await fs.writeFile(filePath, renderPlaceholder({ template: template, input: name }));
    logger.success(`✅ Page : ./${name}.page.tsx created`);
 }

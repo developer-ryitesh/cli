@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 import path from "path";
-import { logger, renderTemplate } from "../utils/index.js";
+import { logger, renderPlaceholder } from "../utils/index.js";
 
 const template = `import { Helmet } from "react-helmet";
 import use{{PlaceHolder}}Controller from "./%placeHolder%.controller";
@@ -38,8 +38,8 @@ export default async function PageController(name) {
    const filePath = path.join(dir, `${name}.page.tsx`);
    const controllerFile = path.join(dir, `${name}.controller.ts`);
 
-   await fs.writeFile(filePath, renderTemplate({ template: template, input: name }));
-   await fs.writeFile(controllerFile, renderTemplate({ template: ctrl, input: name }));
+   await fs.writeFile(filePath, renderPlaceholder({ template: template, input: name }));
+   await fs.writeFile(controllerFile, renderPlaceholder({ template: ctrl, input: name }));
 
    logger.success(`✅ Page + Controller : /${name} created`);
 }

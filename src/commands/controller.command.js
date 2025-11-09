@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 import path from "path";
-import { logger, renderTemplate } from "../utils/index.js";
+import { logger, renderPlaceholder } from "../utils/index.js";
 
 const template = `export default function use{{PlaceHolder}}Controller() {
   const name = "{{PlaceHolder}}";
@@ -19,6 +19,6 @@ export default async function Controller(name) {
    // ✅ Create controller file directly (no folder)
    const filePath = path.join(process.cwd(), `${name}.controller.tsx`);
 
-   await fs.writeFile(filePath, renderTemplate({ template, input: name }));
+   await fs.writeFile(filePath, renderPlaceholder({ template, input: name }));
    logger.success(`✅ Controller : ./${name}.controller.ts created`);
 }

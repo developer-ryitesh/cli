@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 import path from "path";
-import { logger, renderTemplate } from "../utils/index.js";
+import { logger, renderPlaceholder } from "../utils/index.js";
 
 const template = `type Props = {};
 
@@ -19,6 +19,6 @@ export default async function Component(name, option) {
    await fs.mkdirp(componentDir);
    const filePath = path.join(componentDir, `${name}.tsx`);
 
-   await fs.writeFile(filePath, renderTemplate({ template, input: name }));
+   await fs.writeFile(filePath, renderPlaceholder({ template, input: name }));
    logger.success(`✅ Component : ./${name}.component.ts created`);
 }
