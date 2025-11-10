@@ -1,6 +1,6 @@
-import { textTransform } from "./text-transform.js";
+import { textTransform } from "./index.js";
 
-export function renderPlaceholder({ template, input }) {
+export function placeholder({ template, input }) {
    return String(template)
       .replace(/{{PlaceHolder}}/g, textTransform(input, "PascalCase"))
       .replace(/{{placeHolder}}/g, textTransform(input, "CamelCase"))

@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
-export default function {{PlaceHolder}}Module() {
-  return (
-    <div>{{PlaceHolder}} module</div>
-  )
+export default function PlaceHolderModule() {
+   return <div>PlaceHolder module</div>;
 }

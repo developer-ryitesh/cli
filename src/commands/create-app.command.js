@@ -20,8 +20,6 @@ export default async function CreateApp(name) {
    if (fs.existsSync(srcPath)) {
       fs.rmSync(srcPath, { recursive: true, force: true });
    }
-
-   logger.info("📁 Replacing src folder with Retork template...");
    fs.copySync(templatePath, srcPath, { overwrite: true });
 
    const packages = [
