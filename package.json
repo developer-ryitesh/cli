@@ -13,7 +13,7 @@
       "retork": "./bin/index.js"
    },
    "scripts": {
-      "clean": "npm unlink retork -g",
+      "clean": "npm unlink @retork/cli -g",
       "dev": "npm run clean & chmod +x bin/index.js & npm link",
       "deploy": "npm publish --access public"
    },
