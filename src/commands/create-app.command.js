@@ -22,14 +22,21 @@ export default async function CreateApp(name) {
    }
    fs.copySync(templatePath, srcPath, { overwrite: true });
 
-   const packages = [
-      "@retork/state", //
-      "@retork/interceptor",
+   const dependencies = [
+      "@retork/interceptor", //
       "@retork/utils",
       "axios",
+      "react-helmet",
+      "react-router",
+      "@reduxjs/toolkit",
+      "react-redux",
    ];
-
+   const devdependencies = [
+      "npm i --save-dev @types/react-helmet", //
+   ];
    logger.info("📦 Installing dependencies...");
-   execSync(`cd ${name} && npm install ${packages.join(" ")}`, { stdio: "inherit" });
+   execSync(`cd ${name} && npm install ${dependencies.join(" ")}`, { stdio: "inherit" });
+   logger.info("📦 Installing development dependencies...");
+   execSync(`cd ${name} && npm i --save-dev ${devdependencies.join(" ")}`, { stdio: "inherit" });
    logger.success(`✅ Successfully created Retork app: ${name}`);
 }

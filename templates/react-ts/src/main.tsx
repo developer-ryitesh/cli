@@ -1,5 +1,13 @@
 import { createRoot } from "react-dom/client";
 import "./assets/styles/index.css";
-import App from "./app/app";
+import { BrowserRouter } from "react-router";
+import AppModule from "./app/app.module";
+import { StoreProvider } from "./store";
 
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")!).render(
+   <StoreProvider>
+      <BrowserRouter>
+         <AppModule />
+      </BrowserRouter>
+   </StoreProvider>
+);
