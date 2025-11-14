@@ -6,6 +6,7 @@ import Controller from "./controller.command.js";
 import PageController from "./page-controller.command.js";
 import Service from "./service.command.js";
 import Module from "./module.command.js";
+import Interceptor from "./interceptor.command.js";
 
 const cmd = new Command("g") //
    .description("Generate new React-related files like components, pages, and utilities etc.");
@@ -46,5 +47,10 @@ cmd.command("module <name>")
    .alias("m")
    .description("Generate a new react page controller") //
    .action(Module);
+
+cmd.command("interceptor <name>")
+   .alias("i")
+   .description("Generate a new react page controller") //
+   .action(Interceptor);
 
 export default cmd;

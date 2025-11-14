@@ -15,7 +15,7 @@ const HelmetContainer = ({ children }: { children: ReactNode }) => (
 export default function NotFoundPage() {
    return (
       <HelmetContainer>
-         <p>NotFound page work!</p>
+         <p>404 | Page not found</p>
       </HelmetContainer>
    );
 }

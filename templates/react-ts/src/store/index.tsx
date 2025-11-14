@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider, useDispatch, useSelector, useStore } from "react-redux";
 import type { ActionReducerMapBuilder } from "@reduxjs/toolkit";
-import { appConfig } from "../app/app.module";
+import { storeConfig } from "../app/app.module";
 
 const store = configureStore({
-   reducer: appConfig.store.reducers,
-   middleware: (getMiddleware) => getMiddleware().concat([...appConfig.store.middlewares]),
+   reducer: storeConfig.reducers,
+   middleware: (getMiddleware) => getMiddleware().concat([...storeConfig.middlewares]),
 });
 
 function StoreProvider({ children }: { children: React.ReactNode }) {

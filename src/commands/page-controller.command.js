@@ -3,12 +3,14 @@ import path from "path";
 import { logger, placeholder } from "../utils/index.js";
 
 const template = `import { Helmet } from "react-helmet";
+import type { ReactNode } from "react";
 import use{{PlaceHolder}}Controller from "./%placeHolder%.controller";
 
 const HelmetContainer = ({ children }: { children: ReactNode }) => (
    <>
       <Helmet>
          <title>{{placeHolder}}</title>
+         <meta name="description" content="{{placeHolder}} page" />
       </Helmet>
       {children}
    </>
