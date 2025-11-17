@@ -2,11 +2,10 @@ import { Command } from "commander";
 import CreateApp from "./create-app.command.js";
 import Component from "./component.command.js";
 import Page from "./page.command.js";
-import Controller from "./controller.command.js";
-import PageController from "./page-controller.command.js";
 import Service from "./service.command.js";
 import Module from "./module.command.js";
 import Interceptor from "./interceptor.command.js";
+import Guard from "./guard.command.js";
 
 const cmd = new Command("g") //
    .description("Generate new React-related files like components, pages, and utilities etc.");
@@ -25,18 +24,7 @@ cmd.command("component <name>")
 cmd.command("page <name>")
    .alias("p")
    .description("Generate a new react page") //
-   .action(Page)
-   .option("--nf");
-
-cmd.command("controller <name>")
-   .alias("ctrl")
-   .description("Generate a new react page controller") //
-   .action(Controller);
-
-cmd.command("page-controller <name>")
-   .alias("p+ctrl")
-   .description("Generate a new react page controller") //
-   .action(PageController);
+   .action(Page);
 
 cmd.command("service <name>")
    .alias("s")
@@ -52,5 +40,10 @@ cmd.command("interceptor <name>")
    .alias("i")
    .description("Generate a new react page controller") //
    .action(Interceptor);
+
+cmd.command("guard <name>")
+   .alias("g")
+   .description("Generate a new react page controller") //
+   .action(Guard);
 
 export default cmd;

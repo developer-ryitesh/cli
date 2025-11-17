@@ -5,6 +5,7 @@ const ReduxLogger: Middleware = (_) => (next) => (action: any) => {
       console.log(`[Dispatched] : ${action?.type}`);
    }
    if (action?.type.endsWith("/rejected")) {
+      console.log(action);
       console.log(`[Dispatched] : ${action?.type}`);
    }
    return next(action);

@@ -1,24 +1,14 @@
 import fs from "fs-extra";
 import path from "path";
-import { logger, placeholder } from "../utils/index.js";
+import { fileNameValidator, getDirname, logger, render } from "../utils/index.js";
 
-const template = `type Props = {};
+export default async function Component(input, option) {
+   const name = fileNameValidator(input);
+   const targetDir = path.join(process.cwd(), option.nf ? "" : name);
+   const { __dirname } = getDirname(import.meta);
+   const templatePath = path.resolve(__dirname, "../../templates/react-ts/builders/component");
 
-export default function {{PlaceHolder}}({}: Props) {
-   return <p>{{PlaceHolder}} Component work!</p>;
-}
-`;
-
-export default async function Component(name, option) {
-   const isValidName = /^[a-z]+(-[a-z]+)*$/.test(name);
-   if (!isValidName) {
-      logger.error(`❌ Invalid component name: "${name}"\n` + "Component names must be lowercase and may include hyphens (e.g. user, user-list).");
-      process.exit(1);
-   }
-   const componentDir = path.join(process.cwd(), option.nf ? "" : name);
-   await fs.mkdirp(componentDir);
-   const filePath = path.join(componentDir, `${name}.tsx`);
-
-   await fs.writeFile(filePath, placeholder({ template, input: name }));
-   logger.success(`✅ Component : ./${name}.component.ts created`);
+   fs.copySync(templatePath, targetDir, { overwrite: true });
+   render(targetDir, name);
+   logger.success(`✅ Component : ./${name}.tsx created`);
 }

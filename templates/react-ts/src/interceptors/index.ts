@@ -1,10 +1,12 @@
 import InterceptorBuilder from "@retork/interceptor";
 import axios from "axios";
 import LoadingInterceptor from "./loading.interceptor";
+import ErrorInterceptor from "./error.interceptor";
+import Environment from "@/environment/environment";
 
 export default class HttpClient {
    private instance = axios.create({
-      baseURL: "http://localhost:8000/api/v1",
+      baseURL: Environment.BASE_URL,
       headers: {},
       withCredentials: true,
    });
@@ -12,12 +14,14 @@ export default class HttpClient {
    get private() {
       return new InterceptorBuilder(this.instance) //
          .use(LoadingInterceptor)
+         .use(ErrorInterceptor)
          .build();
    }
 
    get public() {
       return new InterceptorBuilder(this.instance) //
          .use(LoadingInterceptor)
+         .use(ErrorInterceptor)
          .build();
    }
 }

@@ -1,5 +1,5 @@
 import { execSync } from "child_process";
-import { logger } from "../utils/index.js";
+import { fileNameValidator, logger } from "../utils/index.js";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 import fs from "fs-extra";
@@ -7,16 +7,16 @@ import fs from "fs-extra";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export default async function CreateApp(name) {
+export default async function CreateApp(input) {
+   const name = fileNameValidator(input);
    const projectPath = path.join(process.cwd(), name);
    const srcPath = path.join(projectPath, "src");
-   const templatePath = path.join(__dirname, "..", "..", "templates", "react-ts", "src");
-
+   const templatePath = path.resolve(__dirname, "../../templates/react-ts/src");
+   
    logger.info("🚀 Creating Vite project...");
    execSync(`npm create vite@latest ${name} -- --template react-ts`, { stdio: "inherit" });
 
    fs.ensureDirSync(templatePath);
-
    if (fs.existsSync(srcPath)) {
       fs.rmSync(srcPath, { recursive: true, force: true });
    }
