@@ -8,20 +8,30 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default async function CreateApp(input) {
-   const name = fileNameValidator(input);
-   const projectPath = path.join(process.cwd(), name);
-   const srcPath = path.join(projectPath, "src");
-   const templatePath = path.resolve(__dirname, "../../templates/react-ts/src");
-   
+   const name = input === "." ? input : fileNameValidator(input);
+   const project = path.join(process.cwd(), name);
+   const framework = path.resolve(__dirname, "../../templates/react-ts/framework");
+
+   //--------Vite project------
    logger.info("🚀 Creating Vite project...");
    execSync(`npm create vite@latest ${name} -- --template react-ts`, { stdio: "inherit" });
 
-   fs.ensureDirSync(templatePath);
-   if (fs.existsSync(srcPath)) {
-      fs.rmSync(srcPath, { recursive: true, force: true });
-   }
-   fs.copySync(templatePath, srcPath, { overwrite: true });
+   //--------Overridden with framework ---------
+   fs.ensureDirSync(project);
+   const srcPath = path.join(project, "src");
+   if (fs.existsSync(srcPath)) fs.rmSync(srcPath, { recursive: true, force: true });
+   fs.readdirSync(framework).forEach((file) => {
+      const source = path.join(framework, file);
+      const target = path.join(project, file);
+      if (fs.lstatSync(source).isDirectory()) {
+         fs.ensureDirSync(target);
+         fs.copySync(source, target, { overwrite: true });
+      } else {
+         fs.copyFileSync(source, target);
+      }
+   });
 
+   //---------------packages-----------
    const dependencies = [
       "@retork/interceptor", //
       "@retork/utils",
@@ -30,13 +40,18 @@ export default async function CreateApp(input) {
       "react-router",
       "@reduxjs/toolkit",
       "react-redux",
-   ];
-   const devdependencies = [
-      "npm i --save-dev @types/react-helmet", //
-   ];
+   ].join(" ");
+
+   const devDependencies = [
+      "@types/react-helmet", //
+   ].join(" ");
+
+   //---------------Installing packages-----------
    logger.info("📦 Installing dependencies...");
-   execSync(`cd ${name} && npm install ${dependencies.join(" ")}`, { stdio: "inherit" });
-   logger.info("📦 Installing development dependencies...");
-   execSync(`cd ${name} && npm i --save-dev ${devdependencies.join(" ")}`, { stdio: "inherit" });
+   execSync(`cd ${name} && npm install ${dependencies}`, { stdio: "inherit" });
+
+   logger.info("📦 Installing dev dependencies...");
+   execSync(`cd ${name} && npm i -D ${devDependencies}`, { stdio: "inherit" });
+
    logger.success(`✅ Successfully created Retork app: ${name}`);
 }
