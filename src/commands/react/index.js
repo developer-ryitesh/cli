@@ -7,43 +7,43 @@ import Module from "./module.command.js";
 import Interceptor from "./interceptor.command.js";
 import Guard from "./guard.command.js";
 
-const cmd = new Command("g") //
+const react = new Command("react") //
    .description("Generate new React-related files like components, pages, and utilities etc.");
 
-cmd.command("create-app <name>")
+react.command("create-app <name>")
    .description("Generate a new React component") //
    .alias("app")
    .action(CreateApp);
 
-cmd.command("component <name>")
+react.command("component <name>")
    .alias("c")
    .description("Generate a new React component") //
    .action(Component)
    .option("--nf");
 
-cmd.command("page <name>")
+react.command("page <name>")
    .alias("p")
    .description("Generate a new react page") //
    .action(Page);
 
-cmd.command("service <name>")
+react.command("service <name>")
    .alias("s")
    .description("Generate a new react page controller") //
    .action(Service);
 
-cmd.command("module <name>")
+react.command("module <name>")
    .alias("m")
    .description("Generate a new react page controller") //
    .action(Module);
 
-cmd.command("interceptor <name>")
+react.command("interceptor <name>")
    .alias("i")
    .description("Generate a new react page controller") //
    .action(Interceptor);
 
-cmd.command("guard <name>")
+react.command("guard <name>")
    .alias("g")
    .description("Generate a new react page controller") //
    .action(Guard);
 
-export default cmd;
+export default react;

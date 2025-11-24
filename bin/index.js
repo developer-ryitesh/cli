@@ -1,10 +1,11 @@
 #! /usr/bin/env node
 import { Command } from "commander";
-import cmd from "../src/commands/index.js";
 import { createRequire } from "module";
 import os from "os";
 import LOGO from "../src/assets/logo.js";
 import Help from "../src/assets/help.js";
+import react from "../src/commands/react/index.js";
+import express from "../src/commands/express/index.js";
 
 const require = createRequire(import.meta.url);
 const pkg = require("../package.json");
@@ -27,7 +28,8 @@ const bootstrap = async () => {
          process.exit(0);
       });
 
-   program.addCommand(cmd);
+   program.addCommand(react);
+   program.addCommand(express);
    program.parse(process.argv);
 };
 bootstrap();

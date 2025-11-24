@@ -2,11 +2,10 @@ import InterceptorBuilder from "@retork/interceptor";
 import axios from "axios";
 import LoadingInterceptor from "./loading.interceptor";
 import ErrorInterceptor from "./error.interceptor";
-import Environment from "@/environment/environment";
 
 export default class HttpClient {
    private instance = axios.create({
-      baseURL: Environment.BASE_URL,
+      baseURL: "/api/v1",
       headers: {},
       withCredentials: true,
    });

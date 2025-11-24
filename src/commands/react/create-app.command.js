@@ -1,5 +1,5 @@
 import { execSync } from "child_process";
-import { fileNameValidator, logger } from "../utils/index.js";
+import { fileNameValidator, logger } from "../../utils/index.js";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 import fs from "fs-extra";
@@ -10,7 +10,7 @@ const __dirname = dirname(__filename);
 export default async function CreateApp(input) {
    const name = input === "." ? input : fileNameValidator(input);
    const project = path.join(process.cwd(), name);
-   const framework = path.resolve(__dirname, "../../templates/react-ts/framework");
+   const framework = path.resolve(__dirname, "../../../templates/react-ts/framework");
 
    //--------Vite project------
    logger.info("🚀 Creating Vite project...");

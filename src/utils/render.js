@@ -20,7 +20,8 @@ export function render(dir, name) {
 
       const updatedContent = String(data)
          .replace(/PlaceHolder/g, textTransform(name, "PascalCase"))
-         .replace(/placeHolder/g, textTransform(name, "CamelCase"));
+         .replace(/placeHolder/g, textTransform(name, "CamelCase"))
+         .replace(/placeholder/g, textTransform(name, "Original"));
 
       // Compute new file name if it contains [placeholder]
       const newFileName = entry.name.replace(/\[placeholder\]/g, name);

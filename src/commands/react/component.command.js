@@ -1,12 +1,12 @@
 import fs from "fs-extra";
 import path from "path";
-import { fileNameValidator, getDirname, logger, render } from "../utils/index.js";
+import { fileNameValidator, getDirname, logger, render } from "../../utils/index.js";
 
 export default async function Component(input, option) {
    const name = fileNameValidator(input);
    const targetDir = path.join(process.cwd(), option.nf ? "" : name);
    const { __dirname } = getDirname(import.meta);
-   const templatePath = path.resolve(__dirname, "../../templates/react-ts/builders/component");
+   const templatePath = path.resolve(__dirname, "../../../templates/react-ts/builders/component");
 
    fs.copySync(templatePath, targetDir, { overwrite: true });
    render(targetDir, name);
