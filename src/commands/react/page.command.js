@@ -6,7 +6,7 @@ export default async function Page(input) {
    const name = fileNameValidator(input);
    const targetDir = path.join(process.cwd(), name);
    const { __dirname } = getDirname(import.meta);
-   const templatePath = path.resolve(__dirname, "../../../react-ts/builders/page");
+   const templatePath = path.resolve(__dirname, "../../../templates/react-ts/builders/page");
 
    fs.copySync(templatePath, targetDir, { overwrite: true });
    render(targetDir, name);
