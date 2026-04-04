@@ -1,6 +1,6 @@
 {
    "name": "@retork/cli",
-   "version": "2.2.0",
+   "version": "1.5.2",
    "description": "CLI for react",
    "keywords": [
       "react",

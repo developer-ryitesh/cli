@@ -3,7 +3,7 @@ import createHttpError from "http-errors";
 import AuthRepository from "../repositories/auth.repository";
 import bcrypt from "bcrypt";
 
-export default class AuthAervice {
+export default class AuthService {
    constructor(private _repo: AuthRepository) {}
 
    login = async (body: LoginDTO) => {

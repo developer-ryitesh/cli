@@ -1,8 +1,8 @@
 import type { RequestHandler } from "express";
-import AuthAervice from "../services/auth.service";
+import AuthService from "../services/auth.service";
 
 export default class AuthController {
-   constructor(private _auth: AuthAervice) {}
+   constructor(private _auth: AuthService) {}
 
    login: RequestHandler = async (req, res, next) => {
       try {
